@@ -9,138 +9,208 @@
   @font-face { font-family: "Geist Pixel"; src: url("fonts/geist-pixel-square.woff2") format("woff2"); font-display: swap; }
   @font-face { font-family: "Raleway"; src: url("fonts/raleway-latin-wght.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 
+  :root { --ink: #111; --body: #3a3a3a; --muted: #6b6b6b; --line: #dcdcdc; --dark: #111; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { background: #fff; }
   body {
     font-family: "Raleway", sans-serif;
     font-variant-numeric: lining-nums;
     font-feature-settings: "lnum" 1;
-    color: #111;
-    background: #fff;
-    line-height: 1.55;
+    color: var(--ink); background: #fff; line-height: 1.55;
   }
-  a { color: #111; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  a:hover { color: #555; }
+  a { color: inherit; }
+  .px { font-family: "Geist Pixel", monospace; font-weight: 400; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
 
-  main { max-width: 820px; margin: 0 auto; padding: 72px 24px 96px; }
+  /* Hero */
+  .hero { background: var(--dark); color: #fff; }
+  .hero .wrap { min-height: min(88vh, 760px); display: flex; flex-direction: column; justify-content: space-between; padding-top: 32px; padding-bottom: 56px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #9a9a9a; }
+  .topbar nav { display: flex; gap: 24px; }
+  .topbar a { text-decoration: none; color: #cfcfcf; }
+  .topbar a:hover { color: #fff; }
+  .hero h1 { font-size: clamp(40px, 7vw, 92px); line-height: 1.02; letter-spacing: -0.5px; max-width: 14ch; margin-top: 72px; }
+  .hero .lede { font-size: 19px; color: #b8b8b8; max-width: 580px; margin-top: 28px; }
+  .hero .meta { display: flex; flex-wrap: wrap; gap: 10px 32px; margin-top: 44px; font-size: 15px; }
+  .hero .meta a { color: #fff; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .hero .meta span { color: #8a8a8a; }
 
-  .k { font-family: "Geist Pixel", monospace; font-size: 13px; color: #666; margin-bottom: 8px; }
-  h1, h2 { font-family: "Geist Pixel", monospace; font-weight: 400; line-height: 1.15; color: #111; }
-  h1 { font-size: 40px; margin-bottom: 20px; max-width: 700px; }
-  h2 { font-size: 28px; margin-bottom: 18px; }
-  p.lede { font-size: 17px; color: #3a3a3a; max-width: 640px; }
+  /* Section heads */
+  section { padding: 112px 0 0; }
+  .k { font-family: "Geist Pixel", monospace; font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+  h2 { font-family: "Geist Pixel", monospace; font-weight: 400; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.05; }
 
-  .links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: 15px; }
+  /* Work */
+  .work { display: grid; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; padding: 72px 0; border-bottom: 1px solid var(--line); }
+  .work:last-child { border-bottom: 0; }
+  .work.flip .text { order: 2; }
+  .num { font-family: "Geist Pixel", monospace; font-size: 15px; color: var(--muted); }
+  .work h3 { font-family: "Geist Pixel", monospace; font-weight: 400; font-size: 32px; line-height: 1.1; margin: 10px 0 14px; }
+  .work p { font-size: 16px; color: var(--body); }
+  .result { margin-top: 22px; padding-top: 16px; border-top: 2px solid var(--ink); }
+  .result .k { margin-bottom: 6px; }
+  .result p { color: var(--ink); font-weight: 500; }
+  .live { display: inline-block; margin-top: 20px; font-size: 15px; text-underline-offset: 4px; }
+  .shot { display: block; border-radius: 10px; overflow: hidden; border: 1px solid #e4e4e4; box-shadow: 0 24px 48px -24px rgba(0,0,0,.25); transition: transform .3s ease; }
+  .shot:hover { transform: translateY(-4px); }
+  .shot img { display: block; width: 100%; height: auto; }
 
-  section { margin-top: 72px; }
+  /* Scope band */
+  .band { background: var(--dark); color: #fff; margin-top: 112px; padding: 104px 0; }
+  .band .k { color: #8a8a8a; }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 56px; }
+  .col h4 { font-family: "Geist Pixel", monospace; font-weight: 400; font-size: 20px; padding-bottom: 12px; border-bottom: 1px solid #333; margin-bottom: 18px; }
+  .col dl dt { font-weight: 600; font-size: 16px; color: #fff; }
+  .col dl dd { font-size: 15px; color: #b0b0b0; margin: 4px 0 20px; }
 
-  table { width: 100%; border-collapse: collapse; }
-  th {
-    font-family: "Geist Pixel", monospace; font-weight: 400; font-size: 13px; color: #666;
-    text-align: left; padding: 0 16px 9px 0; border-bottom: 2px solid #111;
-  }
-  td {
-    font-size: 15px; line-height: 1.5; color: #3a3a3a;
-    padding: 14px 16px 14px 0; border-bottom: 1px solid #d8d8d8; vertical-align: top;
-  }
-  td:first-child { width: 42%; color: #111; font-weight: 600; }
-  td:first-child span { display: block; font-weight: 400; color: #3a3a3a; margin-top: 4px; }
-  td:first-child a { font-weight: 400; font-size: 14px; color: #666; }
+  /* Experience */
+  table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+  th { font-family: "Geist Pixel", monospace; font-weight: 400; font-size: 14px; color: var(--muted); text-align: left; padding: 0 16px 10px 0; border-bottom: 2px solid var(--ink); }
+  td { font-size: 16px; color: var(--body); padding: 18px 16px 18px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td:first-child { color: var(--ink); font-weight: 600; width: 45%; }
+  td.when { color: var(--muted); text-align: right; white-space: nowrap; }
   tr:last-child td { border-bottom: 0; }
-  .sec td {
-    font-family: "Geist Pixel", monospace; font-weight: 400; font-size: 17px; color: #111;
-    background: #f1f1f1; padding: 10px 12px; border-bottom: 0; width: auto;
-  }
 
+  .end { padding: 120px 0 104px; }
+  .end h2 { max-width: 16ch; }
+  .end .meta { display: flex; flex-wrap: wrap; gap: 10px 32px; margin-top: 32px; font-size: 17px; }
+  .end a { text-underline-offset: 4px; text-decoration-thickness: 1px; }
 
-  @media (max-width: 640px) {
-    main { padding: 48px 16px 72px; }
-    h1 { font-size: 30px; }
-    h2 { font-size: 23px; }
-    p.lede { font-size: 16px; }
-    table, tbody, tr, td { display: block; width: 100%; }
-    thead { display: none; }
-    td { padding: 4px 0; border-bottom: 0; }
-    td:first-child { width: 100%; padding-top: 14px; }
-    tr { border-bottom: 1px solid #d8d8d8; padding-bottom: 12px; }
-    tr:last-child { border-bottom: 0; }
-    .sec td { padding: 10px 12px; margin-top: 8px; }
+  @media (max-width: 820px) {
+    .wrap { padding: 0 20px; }
+    .hero .wrap { min-height: auto; padding-bottom: 48px; }
+    .hero h1 { margin-top: 56px; }
+    .hero .lede { font-size: 17px; }
+    .topbar nav { display: none; }
+    section { padding-top: 80px; }
+    .work { grid-template-columns: 1fr; gap: 28px; padding: 48px 0; }
+    .work.flip .text { order: 0; }
+    .work h3 { font-size: 26px; }
+    .band { margin-top: 80px; padding: 72px 0; }
+    .cols { grid-template-columns: 1fr; gap: 24px; margin-top: 36px; }
+    td.when { display: none; }
+    .end { padding: 88px 0 72px; }
   }
 </style>
 </head>
 <body>
-<main>
 
-  <header>
-    <div class="k">Hari S</div>
-    <h1>Product marketer who builds the systems behind the marketing</h1>
-    <p class="lede">I work in B2B SaaS across positioning, launches, SEO and AI search. I measure what is really happening, find out what is true about the product and the market, ship the pages and systems myself, then check whether they moved pipeline.</p>
-    <div class="links">
-      <a href="https://linkedin.com/in/harisrinivas28">LinkedIn</a>
-      <a href="mailto:hari.srinivas28@gmail.com">hari.srinivas28@gmail.com</a>
-      <a href="https://github.com/hari-sz">GitHub</a>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="px">Hari S</span>
+      <nav><a href="#work">Work</a><a href="#scope">What I do</a><a href="#experience">Experience</a></nav>
     </div>
-  </header>
+    <div>
+      <h1 class="px">I build the systems behind the marketing.</h1>
+      <p class="lede">Product marketer in B2B SaaS, across positioning, launches, SEO and AI search. I find out what is true about the product and the market, ship the pages and systems myself, then check whether they moved pipeline.</p>
+      <div class="meta">
+        <span>Product Marketing, CultureMonkey</span>
+        <a href="https://linkedin.com/in/harisrinivas28">LinkedIn</a>
+        <a href="mailto:hari.srinivas28@gmail.com">Email</a>
+        <a href="https://github.com/hari-sz">GitHub</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-  <section>
-    <div class="k">Portfolio</div>
-    <h2>Select work</h2>
-    <table>
-      <thead><tr><th>What</th><th>What it achieved</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>Manufacturing content cluster
-            <span>A hub and 11 pages for manufacturing HR buyers, written around the questions real buyers ask on sales calls.</span>
-            <a href="https://www.culturemonkey.io/industries/manufacturing/">culturemonkey.io/industries/manufacturing</a></td>
-          <td>Within a month, AI answers to manufacturing buyer questions named CultureMonkey far more often, well ahead of a control set of questions.</td>
-        </tr>
-        <tr>
-          <td>Demo-booking page rebuild
-            <span>Rewrote and rebuilt the page every sales conversation starts from: proof, objections and the form flow.</span>
-            <a href="https://www.culturemonkey.io/book-a-demo/">culturemonkey.io/book-a-demo</a></td>
-          <td>Booked meetings rose clearly, measured over matched weeks before and after the rebuild.</td>
-        </tr>
-        <tr>
-          <td>Speak Up launch
-            <span>An anonymous reporting and whistleblowing module: positioning, a pillar and supporting pages, a comparison page, launch film and support collateral, shipped end to end.</span>
-            <a href="https://www.culturemonkey.io/anonymous-reporting-software/">culturemonkey.io/anonymous-reporting-software</a></td>
-          <td>Launched across the site, product updates, video, social and support material on the same day. Search and intent data cut the planned cluster from 14 pages to the 10 worth building, and the product was listed with Gartner in the whistleblowing market.</td>
-        </tr>
-      </tbody>
-    </table>
+<main>
+  <section id="work">
+    <div class="wrap">
+      <div class="k">Portfolio</div>
+      <h2>Select work</h2>
+
+      <div class="work">
+        <div class="text">
+          <div class="num">01</div>
+          <h3>Manufacturing content cluster</h3>
+          <p>A hub and 11 pages for manufacturing HR buyers, written around the questions real buyers ask on sales calls.</p>
+          <div class="result"><div class="k">What it achieved</div><p>Within a month, AI answers to manufacturing buyer questions named CultureMonkey far more often, well ahead of a control set of questions.</p></div>
+          <a class="live" href="https://www.culturemonkey.io/industries/manufacturing/">View the live page</a>
+        </div>
+        <a class="shot" href="https://www.culturemonkey.io/industries/manufacturing/"><img src="img/manufacturing.jpg" alt="CultureMonkey manufacturing page" width="1440" height="900" loading="lazy"></a>
+      </div>
+
+      <div class="work flip">
+        <div class="text">
+          <div class="num">02</div>
+          <h3>Demo-booking page rebuild</h3>
+          <p>Rewrote and rebuilt the page every sales conversation starts from: proof, objections and the form flow.</p>
+          <div class="result"><div class="k">What it achieved</div><p>Booked meetings rose clearly, measured over matched weeks before and after the rebuild.</p></div>
+          <a class="live" href="https://www.culturemonkey.io/book-a-demo/">View the live page</a>
+        </div>
+        <a class="shot" href="https://www.culturemonkey.io/book-a-demo/"><img src="img/book-a-demo.jpg" alt="CultureMonkey book a demo page" width="1440" height="900" loading="lazy"></a>
+      </div>
+
+      <div class="work">
+        <div class="text">
+          <div class="num">03</div>
+          <h3>Speak Up launch</h3>
+          <p>An anonymous reporting and whistleblowing module: positioning, a pillar and supporting pages, a comparison page, launch film and support collateral, shipped end to end.</p>
+          <div class="result"><div class="k">What it achieved</div><p>Launched across the site, product updates, video, social and support material on the same day. Search and intent data cut the planned cluster from 14 pages to the 10 worth building.</p></div>
+          <a class="live" href="https://www.culturemonkey.io/anonymous-reporting-software/">View the live page</a>
+        </div>
+        <a class="shot" href="https://www.culturemonkey.io/anonymous-reporting-software/"><img src="img/speak-up.jpg" alt="CultureMonkey anonymous reporting page" width="1440" height="900" loading="lazy"></a>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <div class="k">Scope</div>
-    <h2>What I do</h2>
-    <table>
-      <tbody>
-        <tr class="sec"><td colspan="2">Product marketing</td></tr>
-        <tr><td>Positioning and launches</td><td>Competitive teardowns and sales-call analysis to find the framing buyers respond to, then the launch itself: narrative, pages, film, sales deck and collateral.</td></tr>
-        <tr><td>Buyer and market research</td><td>Test personas and targeting against real lead and deal data. Research new product bets for leadership, from build-or-not calls to specs and clickable prototypes.</td></tr>
-        <tr class="sec"><td colspan="2">Growth</td></tr>
-        <tr><td>Website and SEO</td><td>Product, comparison, migration and pillar pages, shipped directly in the site's codebase with structured data.</td></tr>
-        <tr><td>AI search</td><td>Track how often AI answers name and cite us against competitors, close the gaps, and catch regressions before they cost leads.</td></tr>
-        <tr><td>Measurement</td><td>CRM and funnel reporting, attribution fixes, and a before-and-after impact ledger for every launch against a site-wide control.</td></tr>
-        <tr class="sec"><td colspan="2">Systems</td></tr>
-        <tr><td>Sales enablement</td><td>Internal tools sales works from: per-call demo kits posted to Slack, and a feed of the pages each prospect read before booking.</td></tr>
-      </tbody>
-    </table>
+  <div class="band" id="scope">
+    <div class="wrap">
+      <div class="k">Scope</div>
+      <h2>What I do</h2>
+      <div class="cols">
+        <div class="col">
+          <h4>Product marketing</h4>
+          <dl>
+            <dt>Positioning and launches</dt><dd>Competitive teardowns and sales-call analysis to find the framing buyers respond to, then the launch: narrative, pages, film and sales deck.</dd>
+            <dt>Buyer and market research</dt><dd>Personas and targeting tested against real lead and deal data. New product bets researched for leadership, from build-or-not calls to prototypes.</dd>
+          </dl>
+        </div>
+        <div class="col">
+          <h4>Growth</h4>
+          <dl>
+            <dt>Website and SEO</dt><dd>Product, comparison, migration and pillar pages, shipped directly in the site's codebase with structured data.</dd>
+            <dt>AI search</dt><dd>How often AI answers name and cite us against competitors, the gaps closed, and regressions caught before they cost leads.</dd>
+          </dl>
+        </div>
+        <div class="col">
+          <h4>Systems</h4>
+          <dl>
+            <dt>Measurement</dt><dd>CRM and funnel reporting, attribution fixes, and a before-and-after impact ledger for every launch against a site-wide control.</dd>
+            <dt>Sales enablement</dt><dd>Per-call demo kits posted to Slack, and a feed of the pages each prospect read before booking.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="k">Background</div>
+      <h2>Experience</h2>
+      <table>
+        <thead><tr><th>Where</th><th>Role</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>CultureMonkey, HR Tech SaaS</td><td>Product Marketing Associate</td><td class="when">2024 to present</td></tr>
+          <tr><td>Fingerprints Creative</td><td>Brand Marketer</td><td class="when">2023 to 2024</td></tr>
+          <tr><td>NIT Tiruchirappalli</td><td>Bachelor of Architecture</td><td class="when">2018 to 2023</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <section>
-    <div class="k">Background</div>
-    <h2>Experience</h2>
-    <table>
-      <thead><tr><th>Where</th><th>Role</th></tr></thead>
-      <tbody>
-        <tr><td>CultureMonkey<span>HR Tech SaaS, October 2024 to present</span></td><td>Product Marketing Associate</td></tr>
-        <tr><td>Fingerprints Creative<span>July 2023 to September 2024</span></td><td>Brand Marketer</td></tr>
-        <tr><td>National Institute of Technology, Tiruchirappalli<span>2018 to 2023</span></td><td>Bachelor of Architecture</td></tr>
-      </tbody>
-    </table>
-  </section>
-
+  <div class="end">
+    <div class="wrap">
+      <div class="k">Contact</div>
+      <h2>Building something that needs to be found?</h2>
+      <div class="meta">
+        <a href="mailto:hari.srinivas28@gmail.com">hari.srinivas28@gmail.com</a>
+        <a href="https://linkedin.com/in/harisrinivas28">LinkedIn</a>
+      </div>
+    </div>
+  </div>
 </main>
+
 </body>
 </html>
